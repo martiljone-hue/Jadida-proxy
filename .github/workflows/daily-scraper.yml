@@ -1,0 +1,24 @@
+name: Daily Smart Employee Scraper
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # كيعني مع 2 ديال الصباح بتوقيت غرينيتش
+  workflow_dispatch: # باش تقدر تخدمو بيدك وقتما بغيتي
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Dependencies
+        run: pip install requests google-generativeai supabase python-dotenv
+      - name: Run Scraper
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python backend/smart_employee.py

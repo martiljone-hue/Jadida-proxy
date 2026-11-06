@@ -8,7 +8,7 @@ interface Product {
 export default function OrderForm({ product }: { product: Product }) {
   const SERVICE_FEE = 15;
   const finalPrice = product.price_mad + SERVICE_FEE;
-  const WHATSAPP_NUMBER = "212600000000"; // سيتم تغييره لاحقاً برقمك
+  const WHATSAPP_NUMBER = "212701248514"; // سيتم تغييره لاحقاً برقمك
 
   const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
